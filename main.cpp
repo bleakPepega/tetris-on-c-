@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include <iostream>
 #include "string"
 using namespace sf;
 
@@ -98,7 +99,7 @@ int main()
         float time = clock.getElapsedTime().asSeconds();
         int qqq = clock1.getElapsedTime().asSeconds();
         int newTime = clock2.getElapsedTime().asSeconds();
-        float timerForChangeBackGround = clock3.getElapsedTime().asMilliseconds();
+        int timerForChangeBackGround = clock3.getElapsedTime().asMilliseconds();
         clock.restart();
         timer += time;
         suka += qqq;
@@ -260,21 +261,22 @@ int main()
         timeText.setString("your time:" + std::to_string(qqq));
         timeText.setPosition(211, 30);
         window.draw( timeText);
-//        if (timerForChangeBackGround == 1) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-0.png");
-//        if (timerForChangeBackGround == 20) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-2.png");
-//        if (timerForChangeBackGround == 30) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-8.png");
-//        if (timerForChangeBackGround == 30) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-3.png");
-//        if (timerForChangeBackGround == 40) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-4.png");
-//        if (timerForChangeBackGround == 50) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-5.png");
-//        if (timerForChangeBackGround == 60) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-6.png");
-//        if (timerForChangeBackGround == 70) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-7.png");
-//        if (timerForChangeBackGround == 80) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-8.png");
-//        if (timerForChangeBackGround == 90) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-9.png");
-//        if (timerForChangeBackGround == 100) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-10.png");
-//        if (timerForChangeBackGround == 110) texture_background.loadFromFile("/home/sad/Рабочий стол/test/ade5d0eb87be4402ae77e8d7b4a77acf0btpmsNyO91VNo9l-11.png");
+        std::string numberForfilename;
+        int cadr = 0;
+            if (timerForChangeBackGround % 50 == 0) {
+                if (timerForChangeBackGround >= 500) numberForfilename = "/home/sad/Рабочий стол/tetris for opsu/water3_000/water3_0";
+                else {
+                    numberForfilename = "/home/sad/Рабочий стол/tetris for opsu/water3_000/water3_00";
+                        }
+                if (timerForChangeBackGround == 0) texture_background.loadFromFile("/home/sad/Рабочий стол/tetris for opsu/water3_000/water3_000.jpg");
+                else {
+                numberForfilename +=  std::to_string(timerForChangeBackGround / 50);
+                numberForfilename += ".jpg";
+                texture_background.loadFromFile(numberForfilename);
+                }
+            }
+            if (timerForChangeBackGround > 1551) clock3.restart();
 
-//        if (timerForChangeBackGround > 31) clock3.restart();
-texture_background.loadFromFile("/home/sad/Рабочий стол/test/newNen");
         // Отрисовка окна
         window.display();
     }
